@@ -1,0 +1,123 @@
+﻿<Window x:Class="FifteenImage.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Puzzle" Height="572" Width="645"
+        AllowsTransparency="True" WindowStyle="None" Background="Transparent"
+        xmlns:c="clr-namespace:FifteenImage" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <ControlTemplate x:Key="BT"  TargetType="{x:Type Button}">
+            <StackPanel>
+                <Rectangle Stretch="Fill">
+                </Rectangle>
+                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"></ContentPresenter>
+            </StackPanel>
+        </ControlTemplate>
+    </Window.Resources>
+    <Window.CommandBindings>
+        <CommandBinding Command="c:DataCommands.NewGame"
+      Executed="NewCommand_Executed"></CommandBinding>
+        
+        <CommandBinding Command="c:DataCommands.Escape"
+      Executed="ExitCommand_Executed"></CommandBinding>
+
+        <CommandBinding Command="c:DataCommands.Mix"
+      Executed="MixCommand_Executed"></CommandBinding>
+        
+        <CommandBinding Command="c:DataCommands.Solve"
+      Executed="SolveCommand_Executed"></CommandBinding>
+        
+        <CommandBinding Command="c:DataCommands.LoadPicture"
+      Executed="LoadPictureCommand_Executed"></CommandBinding>
+
+        <CommandBinding Command="c:DataCommands.ShowSolution"
+      Executed="ShowSolutionCommand_Executed"></CommandBinding>
+    </Window.CommandBindings>
+
+    <Border Width="Auto" Height="Auto" Name="windowFrame"
+    BorderBrush="#395984" BorderThickness="10" CornerRadius="0,20,30,40" >
+        <Border.Background>
+            <LinearGradientBrush>
+                <GradientBrush.GradientStops>
+                    <GradientStopCollection>
+                        <GradientStop Color="#E7EBF7" Offset="0.0"/>
+                        <GradientStop Color="#CEE3FF" Offset="0.5"/>
+                    </GradientStopCollection>
+                </GradientBrush.GradientStops>
+            </LinearGradientBrush>
+        </Border.Background>
+
+        <Grid >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Menu  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.ColumnSpan="8" 
+                   Margin="0,0,0,25" Background="Transparent">
+                <MenuItem Header='_File' >
+                    <MenuItem Header='_New Game' Command="c:DataCommands.NewGame"/>
+                    <MenuItem Header='E_xit' Command="c:DataCommands.Escape"/>
+                </MenuItem>
+                <MenuItem Header='_Game'>
+                    <MenuItem Header='To _mix' Command="c:DataCommands.Mix" />
+                    <MenuItem Header='_Solve' Command="c:DataCommands.Solve" />
+                </MenuItem>
+                <MenuItem Header='_Picture'>
+                    <MenuItem Header='_Load New Picture' Command="c:DataCommands.LoadPicture" />
+                </MenuItem>
+            </Menu>
+            <StatusBar Grid.Row="7" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
+                       Grid.ColumnSpan="8" Margin="0,15,0,0" Background="Transparent">
+                <StatusBarItem>
+                    <Border BorderBrush="DarkRed" BorderThickness="10" CornerRadius="15">
+                        <ProgressBar  Grid.ColumnSpan="5" Grid.Row="7"  Height="20"
+                                  Minimum="0" Maximum="16"  Name="progressBar1" Width="300"  />
+                    </Border>
+                </StatusBarItem>
+                <StatusBarItem>
+                    <StackPanel Orientation="Horizontal">
+                        <Button Name="ShowSolve"  Background="Chocolate" Visibility="Hidden"
+                        Foreground="AliceBlue" Command="c:DataCommands.ShowSolution"
+                       Content="Показать решение" >
+                        </Button>
+                        <Button Name="buttonStop"  Background="DarkMagenta" Visibility="Hidden"
+                        Foreground="GhostWhite" Click="OnStopClick"
+                       Content="Остановить поиск решения" >
+                        </Button>
+                    </StackPanel>
+                </StatusBarItem>
+            </StatusBar>
+            <TextBlock x:Name="Tblock" Grid.Row="1" Grid.Column="5" Padding="10 0 5 0"
+                   Grid.ColumnSpan="3" Grid.RowSpan="4" Background="Azure" TextWrapping="WrapWithOverflow" FontStretch="UltraCondensed" FontSize="12"></TextBlock>
+            <Grid x:Name="grid1" Grid.Column="0" Grid.Row="1" 
+              Grid.ColumnSpan="5" Grid.RowSpan="4" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+            </Grid>
+            <Label Content="Текущий ход:      0" Grid.Column="2" Grid.Row="5"  HorizontalAlignment="Left" Name="label1" VerticalAlignment="Top" Grid.ColumnSpan="2" />
+        </Grid>
+    </Border>
+</Window>

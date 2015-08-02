@@ -1,0 +1,39 @@
+C:\Documents and Settings\User\Мои документы\Visual Studio 2010\Projects\WPF\FifteenImage\FifteenImage\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\User\Мои документы\Visual Studio 2010\Projects\WPF\FifteenImage\FifteenImage\obj\x86\Debug\MainWindow.baml
+C:\Documents and Settings\User\Мои документы\Visual Studio 2010\Projects\WPF\FifteenImage\FifteenImage\obj\x86\Debug\MainWindow.g.cs
+C:\Documents and Settings\User\Мои документы\Visual Studio 2010\Projects\WPF\FifteenImage\FifteenImage\obj\x86\Debug\App.g.cs
+C:\Documents and Settings\User\Мои документы\Visual Studio 2010\Projects\WPF\FifteenImage\FifteenImage\obj\x86\Debug\FifteenImage_MarkupCompile.cache
+C:\Documents and Settings\User\Мои документы\Visual Studio 2010\Projects\WPF\FifteenImage\FifteenImage\obj\x86\Debug\FifteenImage.g.resources
+C:\Documents and Settings\User\Мои документы\Visual Studio 2010\Projects\WPF\FifteenImage\FifteenImage\obj\x86\Debug\FifteenImage.Properties.Resources.resources
+C:\Documents and Settings\User\Мои документы\Visual Studio 2010\Projects\WPF\FifteenImage\FifteenImage\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Documents and Settings\User\Мои документы\Visual Studio 2010\Projects\WPF\FifteenImage\FifteenImage\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Documents and Settings\User\Мои документы\Visual Studio 2010\Projects\WPF\FifteenImage\FifteenImage\bin\Debug\FifteenImage.exe
+C:\Documents and Settings\User\Мои документы\Visual Studio 2010\Projects\WPF\FifteenImage\FifteenImage\bin\Debug\FifteenImage.pdb
+C:\Documents and Settings\User\Мои документы\Visual Studio 2010\Projects\WPF\FifteenImage\FifteenImage\obj\x86\Debug\FifteenImage.exe
+C:\Documents and Settings\User\Мои документы\Visual Studio 2010\Projects\WPF\FifteenImage\FifteenImage\obj\x86\Debug\FifteenImage.pdb
+C:\Documents and Settings\User\Мои документы\Visual Studio 2010\Projects\WPF\FifteenImage\FifteenImage\obj\x86\Debug\FifteenImage_MarkupCompile.lref
+C:\Users\Denis_And_Anna\Documents\Visual Studio 2013\Projects\WPF\FifteenImage\FifteenImage\obj\x86\Debug\FifteenImage.exe
+C:\Users\Denis_And_Anna\Documents\Visual Studio 2013\Projects\WPF\FifteenImage\FifteenImage\obj\x86\Debug\FifteenImage.pdb
+C:\Users\Denis_And_Anna\Documents\Visual Studio 2013\Projects\WPF\FifteenImage\FifteenImage\bin\Debug\FifteenImage.exe
+C:\Users\Denis_And_Anna\Documents\Visual Studio 2013\Projects\WPF\FifteenImage\FifteenImage\bin\Debug\FifteenImage.pdb
+C:\Users\Denis_And_Anna\Documents\Visual Studio 2013\Projects\WPF\FifteenImage\FifteenImage\obj\x86\Debug\MainWindow.g.cs
+C:\Users\Denis_And_Anna\Documents\Visual Studio 2013\Projects\WPF\FifteenImage\FifteenImage\obj\x86\Debug\App.g.cs
+C:\Users\Denis_And_Anna\Documents\Visual Studio 2013\Projects\WPF\FifteenImage\FifteenImage\obj\x86\Debug\FifteenImage_MarkupCompile.cache
+C:\Users\Denis_And_Anna\Documents\Visual Studio 2013\Projects\WPF\FifteenImage\FifteenImage\obj\x86\Debug\FifteenImage_MarkupCompile.lref
+C:\Users\Denis_And_Anna\Documents\Visual Studio 2013\Projects\WPF\FifteenImage\FifteenImage\obj\x86\Debug\MainWindow.baml
+C:\Users\Denis_And_Anna\Documents\Visual Studio 2013\Projects\WPF\FifteenImage\FifteenImage\obj\x86\Debug\FifteenImage.g.resources
+C:\Users\Denis_And_Anna\Documents\Visual Studio 2013\Projects\WPF\FifteenImage\FifteenImage\obj\x86\Debug\FifteenImage.Properties.Resources.resources
+C:\Users\Denis_And_Anna\Documents\Visual Studio 2013\Projects\WPF\FifteenImage\FifteenImage\obj\x86\Debug\FifteenImage.csproj.GenerateResource.Cache
+C:\Users\Denis_And_Anna\Documents\Visual Studio 2013\Projects\WPF\FifteenImage\FifteenImage\obj\x86\Debug\FifteenImage.csprojResolveAssemblyReference.cache
+C:\Users\Den_and_Anna\Documents\Visual Studio 2010\Projects\FifteenImage\FifteenImage\obj\x86\Debug\FifteenImage.exe
+C:\Users\Den_and_Anna\Documents\Visual Studio 2010\Projects\FifteenImage\FifteenImage\obj\x86\Debug\FifteenImage.pdb
+C:\Users\Den_and_Anna\Documents\Visual Studio 2010\Projects\FifteenImage\FifteenImage\bin\Debug\FifteenImage.exe
+C:\Users\Den_and_Anna\Documents\Visual Studio 2010\Projects\FifteenImage\FifteenImage\bin\Debug\FifteenImage.pdb
+C:\Users\Den_and_Anna\Documents\Visual Studio 2010\Projects\FifteenImage\FifteenImage\obj\x86\Debug\MainWindow.g.cs
+C:\Users\Den_and_Anna\Documents\Visual Studio 2010\Projects\FifteenImage\FifteenImage\obj\x86\Debug\App.g.cs
+C:\Users\Den_and_Anna\Documents\Visual Studio 2010\Projects\FifteenImage\FifteenImage\obj\x86\Debug\FifteenImage_MarkupCompile.cache
+C:\Users\Den_and_Anna\Documents\Visual Studio 2010\Projects\FifteenImage\FifteenImage\obj\x86\Debug\FifteenImage_MarkupCompile.lref
+C:\Users\Den_and_Anna\Documents\Visual Studio 2010\Projects\FifteenImage\FifteenImage\obj\x86\Debug\MainWindow.baml
+C:\Users\Den_and_Anna\Documents\Visual Studio 2010\Projects\FifteenImage\FifteenImage\obj\x86\Debug\FifteenImage.g.resources
+C:\Users\Den_and_Anna\Documents\Visual Studio 2010\Projects\FifteenImage\FifteenImage\obj\x86\Debug\FifteenImage.Properties.Resources.resources
+C:\Users\Den_and_Anna\Documents\Visual Studio 2010\Projects\FifteenImage\FifteenImage\obj\x86\Debug\FifteenImage.csproj.GenerateResource.Cache
