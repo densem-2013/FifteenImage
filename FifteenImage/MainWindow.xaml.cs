@@ -155,7 +155,9 @@ namespace FifteenImage
         private void LoadPictureCommand_Executed(object sender, System.Windows.Input.ExecutedRoutedEventArgs e)
         {
             Microsoft.Win32.OpenFileDialog ofd = new Microsoft.Win32.OpenFileDialog();
-            ofd.InitialDirectory = @"Images";
+            string path = Environment.CurrentDirectory;
+            path = path.Substring(0, path.Length - 10);
+            ofd.InitialDirectory = String.Format("{0}\\Images",path);
             ofd.Filter = "Images (*.BMP;*.JPG;*.GIF)|*.BMP;*.JPG;*.GIF|" + "All files (*.*)|*.*";
             ofd.Title = "Выберите рисунок";
             ofd.Multiselect = false;
@@ -169,6 +171,11 @@ namespace FifteenImage
         {
             Count_pos = 0;
             this.timer1.Start();
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+
         }
 
     }

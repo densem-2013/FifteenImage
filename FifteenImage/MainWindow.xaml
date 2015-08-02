@@ -75,7 +75,7 @@
                     <MenuItem Header='To _mix' Command="c:DataCommands.Mix" />
                     <MenuItem Header='_Solve' Command="c:DataCommands.Solve" />
                 </MenuItem>
-                <MenuItem Header='_Picture'>
+                <MenuItem Header='_Picture' Click="MenuItem_Click">
                     <MenuItem Header='_Load New Picture' Command="c:DataCommands.LoadPicture" />
                 </MenuItem>
             </Menu>

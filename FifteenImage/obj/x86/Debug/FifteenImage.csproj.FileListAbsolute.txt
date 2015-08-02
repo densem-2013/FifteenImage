@@ -37,3 +37,15 @@ C:\Users\Den_and_Anna\Documents\Visual Studio 2010\Projects\FifteenImage\Fifteen
 C:\Users\Den_and_Anna\Documents\Visual Studio 2010\Projects\FifteenImage\FifteenImage\obj\x86\Debug\FifteenImage.g.resources
 C:\Users\Den_and_Anna\Documents\Visual Studio 2010\Projects\FifteenImage\FifteenImage\obj\x86\Debug\FifteenImage.Properties.Resources.resources
 C:\Users\Den_and_Anna\Documents\Visual Studio 2010\Projects\FifteenImage\FifteenImage\obj\x86\Debug\FifteenImage.csproj.GenerateResource.Cache
+E:\GitProjects\FifteenImage\FifteenImage\obj\x86\Debug\FifteenImage.exe
+E:\GitProjects\FifteenImage\FifteenImage\obj\x86\Debug\FifteenImage.pdb
+E:\GitProjects\FifteenImage\FifteenImage\obj\x86\Debug\MainWindow.g.cs
+E:\GitProjects\FifteenImage\FifteenImage\obj\x86\Debug\App.g.cs
+E:\GitProjects\FifteenImage\FifteenImage\obj\x86\Debug\FifteenImage_MarkupCompile.cache
+E:\GitProjects\FifteenImage\FifteenImage\obj\x86\Debug\FifteenImage_MarkupCompile.lref
+E:\GitProjects\FifteenImage\FifteenImage\obj\x86\Debug\MainWindow.baml
+E:\GitProjects\FifteenImage\FifteenImage\obj\x86\Debug\FifteenImage.g.resources
+E:\GitProjects\FifteenImage\FifteenImage\bin\Debug\FifteenImage.exe
+E:\GitProjects\FifteenImage\FifteenImage\bin\Debug\FifteenImage.pdb
+E:\GitProjects\FifteenImage\FifteenImage\obj\x86\Debug\FifteenImage.Properties.Resources.resources
+E:\GitProjects\FifteenImage\FifteenImage\obj\x86\Debug\FifteenImage.csproj.GenerateResource.Cache
