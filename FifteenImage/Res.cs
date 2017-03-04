@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿
+using System;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Windows.Data;
 using System.Globalization;
-using System.Windows.Media;
-using System.Reflection;
+using System.IO;
+using System.Windows.Data;
 using System.Windows.Input;
+using System.Windows.Media;
 
 namespace FifteenImage
 {
@@ -21,8 +19,12 @@ namespace FifteenImage
             get
             {
                 ImageSourceConverter imgConv = new ImageSourceConverter();
-                string path = string.Format(@"{0}\{1}", (System.IO.Path.GetDirectoryName(Assembly.GetEntryAssembly().Location)), SFN);
-                imsource = (ImageSource)imgConv.ConvertFromString(SFN);
+                var directoryInfo = Directory.GetParent(Directory.GetCurrentDirectory()).Parent;
+                if (directoryInfo != null)
+                {
+                    string path= $@"{directoryInfo.FullName}\Images\{SFN}";
+                    imsource = (ImageSource)imgConv.ConvertFromString(path);
+                }
                 return imsource;
             }
             set { imsource = value; }
@@ -34,16 +36,9 @@ namespace FifteenImage
              {
                  SFN = value;
                  var imgConv = new ImageSourceConverter();
-                 imsource = (ImageSource)imgConv.ConvertFromString(value); 
-                 if (PropertyChanged != null)
-                 {
-                     PropertyChanged(this, new PropertyChangedEventArgs("SourceFileName"));
-                 }
+                 imsource = (ImageSource)imgConv.ConvertFromString(value);
+                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SourceFileName"));
              }
-        }
-        public Res()
-        {
-            
         }
     }
    public class DConverter : IMultiValueConverter
@@ -52,13 +47,12 @@ namespace FifteenImage
        {
            int par1 = System.Convert.ToInt32(value[0]);
            int par2 = System.Convert.ToInt32(value[1]);
-           return (object)String.Format("{0:0.00},{1:0.00},0.25,0.25", par1 * 0.25, (par2-1) * 0.25);
-           //return (object)new System.Drawing.Rectangle( par1 * 25, (par2-1) * 25, 25, 25);
+           return $"{par1 * 0.25:0.00},{(par2 - 1) * 0.25:0.00},0.25,0.25";
        }
 
        public object[] ConvertBack(object value, Type[] targetType, object parameter, CultureInfo culture)
        {
-           return (object[])null;
+           return null;
        }
    }
    public class DataCommands
@@ -77,28 +71,35 @@ namespace FifteenImage
            escape = new RoutedUICommand(
              "Escape", "Escape", typeof(DataCommands), inputs);
 
-           InputGestureCollection inputs2 = new InputGestureCollection();
-           inputs2.Add(new KeyGesture(Key.N, ModifierKeys.Control, "Ctr+N"));
+           InputGestureCollection inputs2 = new InputGestureCollection
+           {
+               new KeyGesture(Key.N, ModifierKeys.Control, "Ctr+N")
+           };
            newGame = new RoutedUICommand(
              "NewGame", "NewGame", typeof(DataCommands), inputs2);
 
-           InputGestureCollection inputs3 = new InputGestureCollection();
-           inputs3.Add(new KeyGesture(Key.M, ModifierKeys.Control, "Ctr+M"));
+           InputGestureCollection inputs3 = new InputGestureCollection
+           {
+               new KeyGesture(Key.M, ModifierKeys.Control, "Ctr+M")
+           };
            mix = new RoutedUICommand(
              "Mix", "Mix", typeof(DataCommands), inputs3);
 
-           InputGestureCollection inputs4 = new InputGestureCollection();
-           inputs4.Add(new KeyGesture(Key.S, ModifierKeys.Control, "Ctr+S"));
+           InputGestureCollection inputs4 = new InputGestureCollection
+           {
+               new KeyGesture(Key.S, ModifierKeys.Control, "Ctr+S")
+           };
            solve = new RoutedUICommand(
              "Solve", "Solve", typeof(DataCommands), inputs4);
 
-           InputGestureCollection inputs5 = new InputGestureCollection();
-           inputs5.Add(new KeyGesture(Key.L, ModifierKeys.Control, "Ctr+L"));
+           InputGestureCollection inputs5 = new InputGestureCollection
+           {
+               new KeyGesture(Key.L, ModifierKeys.Control, "Ctr+L")
+           };
            loadPicture = new RoutedUICommand(
              "LoadPicture", "LoadPicture", typeof(DataCommands), inputs5);
 
-           InputGestureCollection inputs6 = new InputGestureCollection();
-           inputs6.Add(new KeyGesture(Key.P, ModifierKeys.Control));
+           InputGestureCollection inputs6 = new InputGestureCollection {new KeyGesture(Key.P, ModifierKeys.Control)};
            showSolution = new RoutedUICommand(
              "ShowSolution", "ShowSolution", typeof(DataCommands), inputs6);
        }
@@ -106,10 +107,8 @@ namespace FifteenImage
        {
            get { return escape; }
        }
-       public static RoutedUICommand NewGame
-       {
-           get { return newGame; }
-       }
+       public static RoutedUICommand NewGame => newGame;
+
        public static RoutedUICommand Mix
        {
            get { return mix; }

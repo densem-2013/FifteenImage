@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Windows;
-using System.Windows.Documents;
-using System.Windows.Threading;
 using System.Threading;
+using System.Windows;
+using System.Windows.Input;
+using System.Windows.Threading;
+using Microsoft.Win32;
 
 namespace FifteenImage
 {
@@ -38,12 +39,12 @@ namespace FifteenImage
             InitializeComponent();
             helpRes = new Res();
             helpRes.PropertyChanged += onPropertyChanged;
-            this.PropertyChanged += onCount_pos_Changed;
+            PropertyChanged += onCount_pos_Changed;
             Initial();
             timer1 = new DispatcherTimer();
-            timer1.Tick += new EventHandler(timer1_Tick);
+            timer1.Tick += timer1_Tick;
             timer1.Interval = new TimeSpan(0, 0, 0, 0, 500);
-            buttons[15].Loaded += btnSpinner_Loaded;
+            _buttons[15].Loaded += btnSpinner_Loaded;
           
         }
 
@@ -78,9 +79,8 @@ namespace FifteenImage
 
         private void OnStopClick(object sender, RoutedEventArgs e)
         {
-            this.Dispatcher.BeginInvoke(
-                (ThreadStart)delegate()
-                {
+            Dispatcher.BeginInvoke(
+                (ThreadStart)delegate {
                     Tblock.Text = IDA.DoStop();
                 }
               , DispatcherPriority.Normal);
@@ -88,9 +88,9 @@ namespace FifteenImage
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            ida.AlgFinished += new EventHandler<SearchEventArgs>(OnFinSolve);
-            ida.AlgProgressing += new EventHandler<SearchEventArgs>(OnChangeText);
-            ida.AlgStarted += new EventHandler<SearchEventArgs>(OnChangeText);
+            _ida.AlgFinished += OnFinSolve;
+            _ida.AlgProgressing += OnChangeText;
+            _ida.AlgStarted += OnChangeText;
         }
         // Обработчик события, которое срабатывает при изменении свойства
         private void onPropertyChanged(object sender, PropertyChangedEventArgs e)
@@ -104,57 +104,57 @@ namespace FifteenImage
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
-            if (count_pos < IDA.arResult.Length)
+            if (count_pos < IDA.ArResult.Length)
             {
-                PlaceCells(IDA.arResult[count_pos]);
-                ida._start = IDA.arResult[count_pos];
+                PlaceCells(IDA.ArResult[count_pos]);
+                _ida._start = IDA.ArResult[count_pos];
                 progressBar1.Value = CalcProgrValue();
                 Count_pos++;
             }
             else
             {
-                this.timer1.Stop();
+                timer1.Stop();
             }
         }
 
-        private void NewCommand_Executed(object sender, System.Windows.Input.ExecutedRoutedEventArgs e)
+        private void NewCommand_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-            PlaceCells(targetStat);
+            PlaceCells(_targetStat);
             SetBackground();
             progressBar1.Value = CalcProgrValue();
             Count_pos = 0;
         }
 
-        private void ExitCommand_Executed(object sender, System.Windows.Input.ExecutedRoutedEventArgs e)
+        private void ExitCommand_Executed(object sender, ExecutedRoutedEventArgs e)
         {
             Close();
         }
 
-        private void MixCommand_Executed(object sender, System.Windows.Input.ExecutedRoutedEventArgs e)
+        private void MixCommand_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-            ida._start = Started();
-            this.buttonStop.Visibility = Visibility.Hidden;
-            this.ShowSolve.Visibility = Visibility.Hidden;
-            PlaceCells(ida._start);
-            this.progressBar1.Value = CalcProgrValue();
+            _ida._start = Started();
+            buttonStop.Visibility = Visibility.Hidden;
+            ShowSolve.Visibility = Visibility.Hidden;
+            PlaceCells(_ida._start);
+            progressBar1.Value = CalcProgrValue();
             Count_pos = 0;
             Tblock.Text = "";
         }
 
-        private void SolveCommand_Executed(object sender, System.Windows.Input.ExecutedRoutedEventArgs e)
+        private void SolveCommand_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-            this.Dispatcher.BeginInvoke(
-                (ThreadStart)delegate()
+            Dispatcher.BeginInvoke(
+                (ThreadStart)delegate
                 {
-                    this.buttonStop.Visibility = Visibility.Visible;
-                    ida.DoStart();
+                    buttonStop.Visibility = Visibility.Visible;
+                    _ida.DoStart();
                 }
               , DispatcherPriority.Normal);
         }
 
-        private void LoadPictureCommand_Executed(object sender, System.Windows.Input.ExecutedRoutedEventArgs e)
+        private void LoadPictureCommand_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-            Microsoft.Win32.OpenFileDialog ofd = new Microsoft.Win32.OpenFileDialog();
+            OpenFileDialog ofd = new OpenFileDialog();
             string path = Environment.CurrentDirectory;
             path = path.Substring(0, path.Length - 10);
             ofd.InitialDirectory = String.Format("{0}\\Images",path);
@@ -167,10 +167,10 @@ namespace FifteenImage
             }
         }
 
-        private void ShowSolutionCommand_Executed(object sender, System.Windows.Input.ExecutedRoutedEventArgs e)
+        private void ShowSolutionCommand_Executed(object sender, ExecutedRoutedEventArgs e)
         {
             Count_pos = 0;
-            this.timer1.Start();
+            timer1.Start();
         }
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)

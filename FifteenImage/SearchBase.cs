@@ -1,4 +1,5 @@
 #region Using
+
 using System;
 using System.Threading;
 
@@ -12,9 +13,9 @@ namespace FifteenImage
             public bool DoAddMes;
             public SearchEventArgs(string title, string mes, bool doAddMes) { Title = title; Mes = mes; DoAddMes = doAddMes; }
             public SearchEventArgs() { }
-            public SearchEventArgs(string mes) { Title = String.Empty; Mes = mes; DoAddMes = false;}
-            public SearchEventArgs(string title, string mes) { Title = String.Empty; Mes = mes; DoAddMes = false; }
-            public SearchEventArgs(string mes, bool doAddMes) { Title = String.Empty; Mes = mes; DoAddMes = doAddMes;  }
+            public SearchEventArgs(string mes) { Title = string.Empty; Mes = mes; DoAddMes = false;}
+            public SearchEventArgs(string title, string mes) { Title = string.Empty; Mes = mes; DoAddMes = false; }
+            public SearchEventArgs(string mes, bool doAddMes) { Title = string.Empty; Mes = mes; DoAddMes = doAddMes;  }
         }
         public abstract class SearchBase
         {
@@ -26,68 +27,64 @@ namespace FifteenImage
             public event EventHandler<SearchEventArgs> AlgFinished;
             protected void Started()
             {
-                if (AlgStarted != null)
-                    AlgStarted(this, new SearchEventArgs());
+                AlgStarted?.Invoke(this, new SearchEventArgs());
             }
             protected void Progressing(string mes, bool doAddMes)
             {
-                if (AlgProgressing != null)
-                    AlgProgressing(this, new SearchEventArgs(mes, doAddMes));
+                AlgProgressing?.Invoke(this, new SearchEventArgs(mes, doAddMes));
             }
             protected void Progressing(string mes)
             {
-                if (AlgProgressing != null)
-                    AlgProgressing(this, new SearchEventArgs(mes, false));
+                AlgProgressing?.Invoke(this, new SearchEventArgs(mes, false));
             }
             protected void Progressing(string title, string mes)
             {
-                if (AlgProgressing != null)
-                    AlgProgressing(this, new SearchEventArgs(title, mes, false));
+                AlgProgressing?.Invoke(this, new SearchEventArgs(title, mes, false));
             }
             protected void Finished()
             {
-                if (AlgFinished != null)
-                    AlgFinished(this, new SearchEventArgs());
+                AlgFinished?.Invoke(this, new SearchEventArgs());
             }
-            public bool EventStartAdded { get { return AlgStarted != null; } }
+            public bool EventStartAdded => AlgStarted != null;
             public bool EventProgressAdded { get { return AlgProgressing != null; } }
             public bool EventFinishAdded { get { return AlgFinished != null; } }
-            public bool EventsAdded { get { return AlgStarted != null && AlgProgressing != null && AlgFinished != null; } }
+            public bool EventsAdded => AlgStarted != null && AlgProgressing != null && AlgFinished != null;
+
             #endregion
             #region Variables
             //результат в виде массива массивов шагов с начального до целевого
-            public static int[][] arResult;
+            public static int[][] ArResult;
             //указатель на поток в котором будет производитс€ работа алгоритма
-            protected static Thread thread;
+            protected static Thread Thread;
             //указатель на поток который будет выводить информацию о работе алгоритма
-            protected static Thread threadStatistics;
+            protected static Thread ThreadStatistics;
             #endregion
             #region Functions
             //‘ункции остановки потоков поиска и вывода статистики
             public static string DoStop()
             {
                 string mes = "";
-                if (thread != null)
+                if (Thread != null)
                 {
-                    thread.Abort();
-                    threadStatistics.Abort();
-                    if (!thread.Join(1000))
+                    Thread.Abort();
+                    ThreadStatistics.Abort();
+                    if (!Thread.Join(1000))
                         mes = "ѕроблема остановки потока";
                     else
                     {
                         mes = "ѕоток успешно остановлен";
-                        thread = null;
-                        threadStatistics = null;
+                        Thread = null;
+                        ThreadStatistics = null;
                         
                     }
                 }
-                if (threadStatistics != null)
+                if (ThreadStatistics != null)
                 {
-                    threadStatistics.Abort();
-                    if (!threadStatistics.Join(1000))
+                    ThreadStatistics.Abort();
+                    if (!ThreadStatistics.Join(1000))
                         mes = "ѕроблема остановки потока";
                     else
-                        threadStatistics = null;
+                        ThreadStatistics = null;
                 }
                 return mes;
             }
@@ -98,33 +95,32 @@ namespace FifteenImage
             {
                 try
                 {
-                    if (thread != null)
+                    if (Thread != null)
                     {
-                        if (!thread.Join(10000))
+                        if (!Thread.Join(10000))
                         {
-                            thread.Abort();
-                            thread.Join();
+                            Thread.Abort();
+                            Thread.Join();
                         }
-                        thread = null;
+                        Thread = null;
                     }
-                    arResult = null;
-                    thread = new Thread(new ThreadStart(StartSearch));
-                    thread.IsBackground = true;
-                    thread.Start();
+                    ArResult = null;
+                    Thread = new Thread(StartSearch);
+                    Thread.IsBackground = true;
+                    Thread.Start();
                     //Thread.Sleep(1000);
-                    if (threadStatistics != null)
+                    if (ThreadStatistics != null)
                     {
-                        if (!threadStatistics.Join(10000))
+                        if (!ThreadStatistics.Join(10000))
                         {
-                            threadStatistics.Abort();
-                            threadStatistics.Join();
+                            ThreadStatistics.Abort();
+                            ThreadStatistics.Join();
                         }
-                        threadStatistics = null;
+                        ThreadStatistics = null;
                     }
-                    threadStatistics = null;
-                    threadStatistics = new Thread(new ThreadStart(ShowStatistics));
-                    threadStatistics.IsBackground = true;
-                    threadStatistics.Start();
+                    ThreadStatistics = null;
+                    ThreadStatistics = new Thread(ShowStatistics) {IsBackground = true};
+                    ThreadStatistics.Start();
                 }
                 catch (Exception ex)
                 {
