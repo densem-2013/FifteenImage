@@ -11,32 +11,27 @@ namespace FifteenImage
 {
     public class Res : INotifyPropertyChanged
     {
-        public string SFN = @"6.jpg";
+        public string Sfn = $@"{Directory.GetParent(Directory.GetCurrentDirectory()).Parent?.FullName}\Images\6.jpg";
         public  event PropertyChangedEventHandler PropertyChanged;
-        private  ImageSource imsource;
+        private  ImageSource _imsource;
         public ImageSource ImSource
         {
             get
             {
                 ImageSourceConverter imgConv = new ImageSourceConverter();
-                var directoryInfo = Directory.GetParent(Directory.GetCurrentDirectory()).Parent;
-                if (directoryInfo != null)
-                {
-                    string path= $@"{directoryInfo.FullName}\Images\{SFN}";
-                    imsource = (ImageSource)imgConv.ConvertFromString(path);
-                }
-                return imsource;
+                _imsource = (ImageSource)imgConv.ConvertFromString(Sfn);
+                return _imsource;
             }
-            set { imsource = value; }
+            set { _imsource = value; }
         }
         public string SourceFileName
         {
-             get { return SFN; }
+             get { return Sfn; }
              set 
              {
-                 SFN = value;
+                 Sfn = value;
                  var imgConv = new ImageSourceConverter();
-                 imsource = (ImageSource)imgConv.ConvertFromString(value);
+                 _imsource = (ImageSource)imgConv.ConvertFromString(value);
                  PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SourceFileName"));
              }
         }

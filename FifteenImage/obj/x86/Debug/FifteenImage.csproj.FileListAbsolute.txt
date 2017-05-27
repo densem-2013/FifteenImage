@@ -49,3 +49,4 @@ E:\GitProjects\FifteenImage\FifteenImage\bin\Debug\FifteenImage.exe
 E:\GitProjects\FifteenImage\FifteenImage\bin\Debug\FifteenImage.pdb
 E:\GitProjects\FifteenImage\FifteenImage\obj\x86\Debug\FifteenImage.Properties.Resources.resources
 E:\GitProjects\FifteenImage\FifteenImage\obj\x86\Debug\FifteenImage.csproj.GenerateResource.Cache
+C:\Projects\FifteenImage\FifteenImage\bin\Debug\FifteenImage.exe

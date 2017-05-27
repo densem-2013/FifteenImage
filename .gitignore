@@ -17,11 +17,11 @@ build/
 .[Vv]s/
 
 # NuGet Packages
-*.nupkg
+#*.nupkg
 # The packages folder can be ignored because of Package Restore
-**/packages/*
+#**/packages/*
 # except build/, which is used as an MSBuild target.
-!**/packages/build/
+#!**/packages/build/
 # Uncomment if necessary however generally it will be regenerated when needed
 #!**/packages/repositories.config
 
@@ -182,9 +182,16 @@ $RECYCLE.BIN/
 
 # Visual Studio 2014 CTP
 **/*.sln.ide
+App_Code/Model.Designer.cs
 vwd.webinfo
 logs/
 
 # certificates
 *.pfx
 *.cer
+
+# cache
+
+**/*.cache
+**/bin/*
+**/obj/*
